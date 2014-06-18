@@ -1,0 +1,27 @@
+#!/bin/bash -i
+#set -o history
+#lastCommand=$(echo `history |tail -n2 |head -n1` | sed 's/[0-9]* //')
+lastCommand=$@
+CMDPOOL=~/src/code_pool/commands.txt
+CMDDIR=~/src/code_pool/cmds
+countdown=5
+mkdir -p $CMDDIR
+while true; do
+  if [ $countdown -eq 0 ]; then
+     cp $CMDPOOL $CMDDIR/commands.1 2>> /dev/null
+     #cp $CMDPOOL $CMDDIR/commands.1
+     break
+  else
+     bak=$(( $countdown + 1 ))
+     cp $CMDDIR/commands.$countdown $CMDDIR/commands.$bak 2>> /dev/null
+     #cp $CMDDIR/commands.$countdown $CMDDIR/commands.$bak
+     countdown=$(( $countdown - 1 ))
+  fi
+done
+
+
+echo  >> $CMDPOOL
+echo $lastCommand >> $CMDPOOL
+line=`tail -n 1 $CMDPOOL`
+echo "'$line' is recorded"
+

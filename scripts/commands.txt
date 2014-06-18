@@ -1,0 +1,97 @@
+git grep -n -E "(a|b)"
+
+git clone ssh://hchen@ip:29418/a
+
+scp -p -P 29418 hchen@tempest-reviews.eng.vmware.com:hooks/commit-msg .git/hooks/
+
+git symbolic-ref HEAD refs/heads/mybranch
+
+git grep -n 3 mysqlProvisionedService.get
+
+sudo service --status-all
+
+export PATH=/usr/local/rvm/gems/ruby-1.9.3-p484@global/bin:/usr/local/rvm/gems/ruby-1.9.3-p484/bin:/usr/local/rvm/rubies/ruby-1.9.3-p484/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+bundle exec ./bin/warden -- list | awk '{print $3}' | xargs -I {} bundle exec ./bin/warden -- destroy --handle {}
+
+ps -ef | grep wshd
+
+sudo lsof -i TCP | grep 17509
+
+sudo netstat -apn | grep pid
+
+mysql -h 192.168.99.11 -P 15005 -u uWPCM9Edyx --password=old
+
+http://linuxcommand.org/man_pages/mkisofs8.html
+https://help.ubuntu.com/community/SettingUpNFSHowTo
+
+sudo apt-get install cifs-utils
+
+mount -t cifs //10.146.25.241/db-backup /Users/hchen/backup -o sec=ntlm
+
+dpkg -s <packagename> | grep Version
+
+mount -t cifs -o user=luke //192.168.1.104/share /mnt/linky_share
+
+VBoxManage list -l vms | grep "Host path" | grep manifests
+
+VBoxManage unregistervm --delete {92eabaaa-bdbb-4ade-bbf8-81f838cdd176}
+
+nfs://sha-exit15:/vol/vol0/home
+
+$ pkgutil --file-info /usr/bin/clang
+
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+brew tap homebrew/dupes
+
+brew install freetds
+brew install libiconv
+
+vagrant plugin list
+
+vagrant plugin install vagrant-windows
+
+VBoxManage unregistervm Precise64
+
+sudo launchctl load /Library/LaunchDaemons/org.virtualbox.startup.plist
+
+sudo /Library/StartupItems/VirtualBox/VirtualBox restart
+
+sudo /Library/Application\ Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh restart
+
+git remote add upstream https://github.com/vchs/vchs-services-puppet-modules
+git checkout master
+git fetch upstream
+git rebase upstream/master
+git push github master
+
+sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/
+
+git submodule deinit -f private_modules
+
+vi .git/config
+
+vi git/modules/private_modules/config
+
+machine github.com login username password password
+
+cgget -g cpuset /
+
+sudo mount -o remount,rw /dev/sdc1 /mnt/BUILD
+
+gitdir=.git
+
+gitdir=$(git rev-parse --git-dir); scp -p -P 29418 hchen@tempest-reviews.eng.vmware.com:hooks/commit-msg ${gitdir}/hooks/
+
+class ensure_sc_ready {
+  exec { 'ensure_sc_ready':
+    command => "/usr/bin/curl http://${srv_api_uri}/info",
+    tries => 120,
+    try_sleep => 5
+  }
+}
+
+ps -elf | grep qemu
+#!/bin/bash
+exec ssh -t user@10.146.25.131 command opts
+
